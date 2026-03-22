@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>~두근두근 화이트데이 메신저~</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div id="game-container">
+    <div id="intro-scene" class="scene active-scene" onclick="nextScene('name-input-scene')">
+        <h1>~두근두근<br>화이트데이 메신저~</h1>
+        <div class="heart-icon">💖</div>
+        <p class="blink">- 아무 곳이나 눌러서 시작 -</p>
+    </div>
+
+    <div id="name-input-scene" class="scene">
+        <p>당신의 이름은?</p>
+        <input type="text" id="user-name-input" placeholder="이름 입력..." maxlength="5">
+        <button class="pink-btn" onclick="startGame()">확인</button>
+    </div>
+
+    <div id="script-scene" class="scene">
+        <div class="script-box">
+            <p id="script-content"></p>
+            <span class="next-tip">Press Space or Click</span>
+        </div>
+    </div>
+
+    <div id="select-scene" class="scene">
+        <div id="bg-preview"></div>
+        <p style="z-index: 10; font-size: 18px; color: #333;">그나저나 누구를 고를까?</p>
+        <div class="select-wrapper">
+            <button class="char-select-btn"
+                    onmouseover="previewChar('태영')"
+                    onmouseout="clearPreview()"
+                    onclick="selectCharacter('태영')">태영</button>
+            <button class="char-select-btn"
+                    onmouseover="previewChar('다영')"
+                    onmouseout="clearPreview()"
+                    onclick="selectCharacter('다영')">다영</button>
+        </div>
+    </div>
+
+    <div id="chat-scene" class="scene" style="padding: 0;">
+        <div class="desc-bar">주어진 선택지 중 올바른 것을 선택하세요!<br>호감도가 -50이 되면 탈락입니다.</div>
+        <div id="chat-header">
+            <div id="header-pfp"></div>
+            <span id="partner-name"></span>
+            <span id="affection-display">💛 0</span>
+        </div>
+        <div id="chat-window"></div>
+        <div id="options-bar"></div>
+    </div>
+
+    <div id="true-chat-scene" class="scene" style="padding: 0;">
+        <div id="true-chat-header">
+            <div id="true-chat-pfp"></div>
+            <span>누나</span>
+        </div>
+        <div id="true-chat-window"></div>
+        <div id="true-ending-overlay">
+            <p id="true-ending-title-text">TRUE ENDING</p>
+            <p id="true-ending-bottom-text">-화이트데이는 사랑하는 사람과-</p>
+            <button class="pink-btn" onclick="retryGame()" style="position:absolute; bottom:20px; width:70%; font-family:inherit;">처음부터 다시하기</button>
+        </div>
+    </div>
+
+    <div id="ending-scene" class="scene">
+        <h1 id="ending-title">GAME OVER</h1>
+        <div class="ending-box">
+            <p class="ending-msg" id="ending-body"></p>
+        </div>
+        <button class="pink-btn" id="retry-btn" onclick="retryGame()">처음부터 다시하기</button>
+    </div>
+</div>
+
+<script src="script.js"></script>
+</body>
+</html>
